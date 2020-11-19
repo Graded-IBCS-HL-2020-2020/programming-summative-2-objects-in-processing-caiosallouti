@@ -1,4 +1,4 @@
-/** MAKE SURE TO READ THE README CAREFULLY BEFORE YOU BEGIN EDITING THIS CODE */
+
 class Ball {
     private Sketch s;
     private float diameter;
@@ -7,16 +7,55 @@ class Ball {
     private int col;
     private float speedY;
     private float speedX;
+    private float tempSX;
+    private float tempSY;
 
-    /**
-     * The default constructor generates random values for most of the instance
-     * variables.
-     */
-    public Ball(Sketch sketch) {
-        s = sketch;
-        diameter = s.random(50, 150); // random diameter between 50 and 150
-        x = s.random(diameter / 2, s.width - diameter / 2);
-        y = s.random(diameter / 2, s.height - diameter / 2);
+
+    public Ball(Sketch sketch){
+      s = sketch;
+      diameter = s.random(50, 70);
+      x = s.random (diameter/ 2, s.width - diameter/ 2 );
+      y = s.random (diameter/ 2, s.height - diameter/ 2);
+      col = s.randomColor(false);
+      //borderColor = s.randomColor(false);
+      speedY = s.random (2, 5);
+      speedX = s.random (2, 5);
+    }
+   
+     public float getRadius(){
+       return diameter / 2;
+     }
+
+    public float getX(){
+      return x;
+    }
+
+    public float getY(){
+      return y;
+    }
+
+    public void saveSpeedX(){
+      tempSX = speedX; 
+      tempSY = speedY;     
+    }
+
+    public void saveSpeedY(){
+      tempSX = speedX; 
+      tempSY = speedY; 
+    }
+
+
+    public void start(){
+      speedX = tempSX;
+      speedY = tempSY;
+    }
+
+    public void stop(){
+      saveSpeedY();
+      saveSpeedX();
+      speedX = 0;
+      speedY = 0;
+    }
 
         /*
          * SUMMATIVE REQUIRED use the randomColor() method in the sketch to set default
@@ -27,10 +66,10 @@ class Ball {
          * SUMMATIVE REQUIRED Set speedX and speedY to reasonable defaults. Random
          * numbers could be nice, but are not required.
          */
-    }
+    
 
     /** This constructor lets you specify all of the ball instance variables */
-    public Ball(Sketch s, float X, float Y, float ballDiam, int ballColor, float sx, float sy) {
+    public Ball(Sketch sketch, float X, float Y, float ballDiam, int ballColor, float sx, float sy) {
         /* SUMMATIVE REQUIRED Fill out this constructor */
     }
 
